@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +15,30 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+
+        //\App\Models\User::factory(10)->create();
+        \App\Models\Student::factory(17)->create();
+        \App\Models\Room::factory(10)->create();
+        \App\Models\Faculty::factory(10)->create();
+        \App\Models\StudentParent::factory(10)->create();
+        \App\Models\User::create([
+        'name' => 'nizham rifqi',
+        //'username' => 'nizhamrifqi',
+        'email' => 'nizhamrifqi@gmail.com',
+        'password' => Hash::make('12345')
+        ]);
+        \App\Models\Student::create([
+        'nim' => 'L200164004',
+        'full_name' => 'Muhammad Nizhamuddin Rifqi',
+        'gender' => 'male',
+        'room_id' => '1',
+        'faculty_id' => '1',
+        'parent_id' => '1',
+        'password' => Hash::make('12345'),
+        'phone' => '081327934811'
+        ]);
+    
+        $this->call(AdminSeeder::class);
+
     }
 }
