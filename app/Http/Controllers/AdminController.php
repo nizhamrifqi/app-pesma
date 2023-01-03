@@ -18,8 +18,14 @@ class AdminController extends Controller
     {
         return view('admin.index');
     }
-    public function dashboards()
+
+    public function show($id)
     {
-        return view('student.index');
+        //
+        $data = Admin::where('id',$id)->first();
+        return view('admin.profile', compact(
+            'data'
+        ));
+
     }
 }

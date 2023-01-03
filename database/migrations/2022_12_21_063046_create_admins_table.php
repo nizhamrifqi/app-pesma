@@ -18,6 +18,7 @@ class CreateAdminsTable extends Migration
             $table->string('username')->unique();
             $table->string('full_name');
             $table->string('password');
+            $table->enum('status', ['1', '2', '3']);
             $table->timestamps();
         });
     }

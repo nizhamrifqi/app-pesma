@@ -1,26 +1,31 @@
 
 <nav class="topnav navbar navbar-light">
-  <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
+  <button type="button" class="navbar-toggler text-muted mt-1  collapseSidebar">
     <i class="fe fe-menu navbar-toggler-icon"></i>
   </button>
   <ul class="nav">
     <li class="nav-item">
-      <a class="nav-link text-muted my-2" href="#" id="modeSwitcher" data-mode="dark">
+      <a class="nav-link text-muted my-1 p-2" href="#" id="modeSwitcher" data-mode="dark">
         <i class="fe fe-sun fe-16"></i>
       </a>
     </li>
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <a class="nav-link dropdown-toggle text-muted " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span class="avatar avatar-sm mt-2">
+          <label class="mr-3">
+          @auth
+          {{ Auth()->user()->full_name }}
+          @endauth
+          </label>
           <img src="{{ asset('tinydash')}}/assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
-        @auth
-        {{ Auth()->user()->full_name }}
-        @endauth
         </span>
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="#">Profile</a>
-
+        <a class="dropdown-item" href="#">
+          <i class="fe fe-user fe-12 mr-2"></i> 
+          My Profile
+        </a>
+          <hr class="m-2">
         <form action="/logout" method="post">
           @csrf
           <button type="submit" class="dropdown-item">          
@@ -51,28 +56,11 @@
       </a>
     </div>
     <ul class="navbar-nav flex-fill w-100 mb-2">
-      <li class="nav-item dropdown">
-        <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+      <li class="nav-item w-100">
+        <a class="nav-link" href="widgets.html">
           <i class="fe fe-home fe-16"></i>
-          <span class="ml-3 item-text">Dashboard</span><span class="sr-only">(current)</span>
+          <span class="ml-3 item-text">Dashboard</span>
         </a>
-        <ul class="collapse list-unstyled pl-4 w-100" id="dashboard">
-          <li class="nav-item active">
-            <a class="nav-link pl-3" href="./index.html"><span class="ml-1 item-text">Default</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link pl-3" href="./dashboard-analytics.html"><span class="ml-1 item-text">Analytics</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link pl-3" href="./dashboard-sales.html"><span class="ml-1 item-text">E-commerce</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link pl-3" href="./dashboard-saas.html"><span class="ml-1 item-text">Saas Dashboard</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link pl-3" href="./dashboard-system.html"><span class="ml-1 item-text">Systems</span></a>
-          </li>
-        </ul>
       </li>
     </ul>
     <p class="text-muted nav-heading mt-4 mb-1">

@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Room::factory(10)->create();
         \App\Models\Faculty::factory(10)->create();
         \App\Models\StudentParent::factory(10)->create();
+        \App\Models\Admin::factory(5)->create();
         \App\Models\User::create([
         'name' => 'nizham rifqi',
         'email' => 'nizhamrifqi@gmail.com',

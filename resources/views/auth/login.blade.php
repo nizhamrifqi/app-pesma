@@ -37,19 +37,9 @@
         <label for="password" class="sr-only"></label>
         <input type="password" id="password" name='password' class="form-control form-control-lg" placeholder="Password" required=>
     </div>
-    
-    <div class="form-group">
-        
-        <label for="admin">
-            <a href="/loginadmin">
-                Login with Admin Account
-            </a>
-        </label>
-        
-    </div>
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-    <p class="mt-5 mb-3 text-muted">© 220</p>
+    <p class="mt-5 mb-3 text-muted">©Templated by : Tinydash - 2020</p>
     
 </form>
 

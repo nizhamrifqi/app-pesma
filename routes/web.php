@@ -32,14 +32,15 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 
-Route::middleware('auth:admin')->group(function () {
-    Route::get('/admin', [AdminController::class, 'dashboard'])->name('dashboard-admin');
+Route::prefix('admin')->middleware('auth:admin')->group(function () {
+    Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard-admin');
+    Route::get('/profile', [AdminController::class, 'dashboard'])->name('dashboard-admin');
 });
+Route::get('/staff', [AdminController::class, 'index'])->name('dashboard-staff');
+Route::get('/security', [AdminController::class, 'index'])->name('dashboard-security');
 
 Route::middleware('auth:student')->group(function () {
     Route::get('/student', [AdminController::class, 'dashboards'])->name('dashboard-student');
 });
 
-
-//Route::get('/staff', [AdminController::class, 'index']);
 
