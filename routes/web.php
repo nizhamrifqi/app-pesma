@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentActiveController;
 
 
@@ -21,7 +22,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::get('/b', function () {
+    return view('index');
+});
 
 //Login
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
@@ -29,10 +32,13 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 
-Route::get('/admin', [AdminController::class, 'index'])->name('dashboard-admin');
+Route::middleware('auth:admin')->group(function () {
+    Route::get('/admin', [AdminController::class, 'dashboard'])->name('dashboard-admin');
+});
 
-
-Route::get('/student', [StudentActiveController::class, 'index'])->name('dashboard-student');
+Route::middleware('auth:student')->group(function () {
+    Route::get('/student', [AdminController::class, 'dashboards'])->name('dashboard-student');
+});
 
 
 //Route::get('/staff', [AdminController::class, 'index']);

@@ -14,7 +14,7 @@ class CreateStudentsTable extends Migration
     public function up()
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->primary('nim');
+            $table->id();
             $table->string('nim');
             $table->string('full_name');
             $table->enum('gender',['Male','Female']);

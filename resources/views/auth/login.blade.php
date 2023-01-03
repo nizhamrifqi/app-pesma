@@ -26,7 +26,7 @@
     <h1 class="h6 mb-3">Sign in</h1>
     <div class="form-group">
         <label for="nim" class="sr-only"></label>
-        <input type="text" id="nim" name='nim' class="form-control form-control-lg @error('nim') is-invalid @enderror" placeholder="nim" 
+        <input type="text" id="nim" name='nim' class="form-control form-control-lg @error('nim') is-invalid @enderror" placeholder="NIM" 
         required autofocus value="{{old('nim')}}">
         @error('nim')
             <div class="invalid-feedback"> {{$message}} </div>
@@ -37,8 +37,19 @@
         <label for="password" class="sr-only"></label>
         <input type="password" id="password" name='password' class="form-control form-control-lg" placeholder="Password" required=>
     </div>
+    
+    <div class="form-group">
+        
+        <label for="admin">
+            <a href="/loginadmin">
+                Login with Admin Account
+            </a>
+        </label>
+        
+    </div>
+
     <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-    <p class="mt-5 mb-3 text-muted">© 2020</p>
+    <p class="mt-5 mb-3 text-muted">© 220</p>
     
 </form>
 

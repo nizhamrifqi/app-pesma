@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
-use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -29,13 +27,13 @@ class LoginController extends Controller
         $request->session()->regenerate();
 
         //If fill form with data student
-        if(Auth::guard('student')->attempt($request->only('nim' , 'password'))){
-            return redirect()->route('dashboard-admin');
+        if(Auth::guard('student')->attempt(['nim' =>$request->nim , 'password' => $request->password])){
+            return redirect()->route('dashboard-student');
         };
         
         //If fill form with data admin
         if (Auth::guard('admin')->attempt(['username' =>$request->nim , 'password' => $request->password])){
-            return redirect()->route('dashboard-student');
+            return redirect()->route('dashboard-admin');
         };
         
 

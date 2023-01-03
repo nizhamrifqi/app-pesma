@@ -14,7 +14,7 @@
         <span class="avatar avatar-sm mt-2">
           <img src="{{ asset('tinydash')}}/assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
         @auth
-        {{auth()->user()->full_name}}
+        {{ Auth()->user()->full_name }}
         @endauth
         </span>
       </a>

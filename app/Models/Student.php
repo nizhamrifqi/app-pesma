@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\AuthenticatesUsers;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Student extends Authenticatable
@@ -11,7 +12,7 @@ class Student extends Authenticatable
     use HasFactory;
 
 
-    protected $guarded =[];
+    protected $guarded =[ 'id'];
     // protected  $primaryKey= 'nim';
     
     // public function incrementing (){
