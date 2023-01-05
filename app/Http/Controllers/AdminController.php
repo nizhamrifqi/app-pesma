@@ -16,14 +16,14 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('admin.index');
+        return view('super.index');
     }
 
     public function show($id)
     {
         //
         $data = Admin::where('id',$id)->first();
-        return view('admin.profile', compact(
+        return view('super.profile', compact(
             'data'
         ));
 
