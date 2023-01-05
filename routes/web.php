@@ -36,8 +36,8 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::prefix('super')->middleware('auth:admin')->group(function () {
     Route::resource('/profile', AdminController::class);
     Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard-super');
-    Route::get('/profile/index', [AdminController::class, 'editprofile'])->name('profile-edit');
-    Route::put('/profile/update', [AdminController::class, 'updateprofile'])->name('profile-update');
+    Route::get('/profile', [AdminController::class, 'editprofile'])->name('profile-edit');
+    Route::put('/profile', [AdminController::class, 'updateprofile'])->name('profile-update');
 
     // Route::get('/profile/{username}', [AdminController::class, 'show']);
     // Route::put('profile/{username}', [AdminController::class, 'update']);

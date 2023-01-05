@@ -184,7 +184,7 @@ class AdminController extends Controller
 
     public function editprofile()
     {
-        return view('ss');
+        return view('super.profile.index');
     }
 
     public function updateprofile(Request $request)
@@ -219,7 +219,7 @@ class AdminController extends Controller
             ]);
         }
 
-        dd($request->all());
-        // return back()->with('message', 'Your profile has been updated');
+        // dd($request->all());
+        return back()->with('message', 'Your profile has been updated');
     }
 }
