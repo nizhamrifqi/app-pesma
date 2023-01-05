@@ -22,7 +22,7 @@
                         @method("put")
                         @csrf
 
-                        @include('admin.profile._detailform')
+                        @include('super.profile._detailform')
                     </form>
 
                 </div>

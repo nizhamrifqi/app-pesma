@@ -18,15 +18,15 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $data = Admin::all();
-        return view('admin.profile.admins', compact(
-            'data'
-        ));
+        // $data = Admin::all();
+        // return view('admin.profile.admins', compact(
+        //     'data'
+        // ));
     }
 
     public function dashboard()
     {
-        return view('admin.index');
+        return view('super.index');
     }
 
     /**
@@ -37,8 +37,9 @@ class AdminController extends Controller
     public function create()
     {
         //
+
         $create = new Admin;
-        return view('admin.profile.create',compact(
+        return view('super.profile.create',compact(
             'create'
         ));
     }
@@ -68,7 +69,7 @@ class AdminController extends Controller
         // $student-> img_student = $data;
         // $d-> move(public_path().'/img', $data);
         
-        return redirect('admin/profile/')->with('success', "Data berhasil Disimpan");
+        return redirect('super/profile/')->with('success', "Data berhasil Disimpan");
         
     }
 
@@ -90,10 +91,15 @@ class AdminController extends Controller
         // ));
 
         //ada file upload
-        $data = Admin::where('username',$username)->first();
-        return view('admin.profile.index', compact(
-            'data'
-        ));
+        // $data = Admin::where('username',$username)->first();
+        // return view('admin.profile.index', compact(
+        //     'data'
+        // ));
+
+        // $data = Admin::where('id',$id)->first();
+        // return view('super.profile', compact(
+        //     'data'
+        // ));
         // dd($data);
 
     }
@@ -178,7 +184,7 @@ class AdminController extends Controller
 
     public function editprofile()
     {
-        return view('admin.profile.index');
+        return view('ss');
     }
 
     public function updateprofile(Request $request)
@@ -214,6 +220,6 @@ class AdminController extends Controller
         }
 
         dd($request->all());
-        return back()->with('message', 'Your profile has been updated');
+        // return back()->with('message', 'Your profile has been updated');
     }
 }

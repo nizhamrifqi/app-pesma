@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-12">
 
-                <form action="{{ url('admin/profile')}}" method="POST">
+                <form action="{{ url('profile/profile')}}" method="POST">
                     @csrf
                     Username : <input type="text" name="username" id="username"></br>
                     Full Name : <input type="text" name="fullname" id="fullname"></br>

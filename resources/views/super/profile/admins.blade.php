@@ -6,7 +6,7 @@
             <div class="col-12">
                 <h3 class="page-title">Settings</h3>
                 <p>
-                    <a class="btn btn-info" href="{{url('admin/profile/create')}}"> Tambah</a>
+                    <a class="btn btn-info" href="{{url('super/profile/create')}}"> Tambah</a>
                 </p>
 
                     <table>
@@ -28,7 +28,7 @@
                                 <td> {{ $admin->password }} </td>
                                 <td> {{ $admin->img_student }} </td>
                                 <td> {{ $admin->status }} </td>
-                                <td> <a class="btn btn-info" href="{{ url('admin/profile/'.$admin->username)}}"> Edit </a> 
+                                <td> <a class="btn btn-info" href="{{ url('super/profile/'.$admin->username)}}"> Edit </a> 
                                 </td>
                             </tr>
 

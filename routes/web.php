@@ -32,10 +32,11 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 
-Route::prefix('admin')->middleware('auth:admin')->group(function () {
+
+Route::prefix('super')->middleware('auth:admin')->group(function () {
     Route::resource('/profile', AdminController::class);
-    Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard-admin');
-    Route::get('profile/index', [AdminController::class, 'editprofile'])->name('profile-edit');
+    Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard-super');
+    Route::get('/profile/index', [AdminController::class, 'editprofile'])->name('profile-edit');
     Route::put('/profile/update', [AdminController::class, 'updateprofile'])->name('profile-update');
 
     // Route::get('/profile/{username}', [AdminController::class, 'show']);
@@ -43,8 +44,10 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
     // Route::post('profile/{username}', [AdminController::class, 'update']);
     // Route::get('profile/{admin:username}', [AdminController::class, 'show']);
     // Route::get('/profile', [AdminController::class, 'dashboard'])->name('dashboard-admin');
+
 });
-Route::get('/staff', [AdminController::class, 'index'])->name('dashboard-staff');
+
+Route::get('/admin', [AdminController::class, 'index'])->name('dashboard-admin');
 Route::get('/security', [AdminController::class, 'index'])->name('dashboard-security');
 
 Route::middleware('auth:student')->group(function () {

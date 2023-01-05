@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-12">
 
-                <form action="{{url('admin/profile/'.$edit->username)}}" method="POST">
+                <form action="{{url('super/profile/'.$edit->username)}}" method="POST">
                     @csrf
                     <input type="hidden" name="_method" value="PATCH">
                     ID : <input type="text" name="id" id="id" value="{{$edit->id}}"></br>

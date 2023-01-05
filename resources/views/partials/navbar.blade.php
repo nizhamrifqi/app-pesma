@@ -21,7 +21,7 @@
         </span>
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="/admin/profile/index" }}">
+        <a class="dropdown-item" href="{{ route('profile-edit') }}">
           <i class="fe fe-user fe-12 mr-2"></i> 
           My Profile
         </a>
