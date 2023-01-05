@@ -1,6 +1,6 @@
 
 <nav class="topnav navbar navbar-light">
-  <button type="button" class="navbar-toggler text-muted mt-1  collapseSidebar">
+  <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
     <i class="fe fe-menu navbar-toggler-icon"></i>
   </button>
   <ul class="nav">
@@ -21,7 +21,7 @@
         </span>
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="#">
+        <a class="dropdown-item" href="/admin/profile/index" }}">
           <i class="fe fe-user fe-12 mr-2"></i> 
           My Profile
         </a>

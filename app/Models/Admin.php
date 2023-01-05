@@ -14,4 +14,15 @@ class Admin extends Authenticatable
     protected $guarded =[
         'id'
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'username';
+    }
+
+    // public $table = "admin";
+
+    // protected $fillable = [
+    //     'username', 'full_name' ,'password', 'img_admin'
+    // ];
 }
