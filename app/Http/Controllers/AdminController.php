@@ -18,15 +18,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        // $data = Admin::all();
-        // return view('admin.profile.admins', compact(
-        //     'data'
-        // ));
-    }
-
-    public function dashboard()
-    {
-        return view('super.index');
+        return view('admin.index', [
+            'title' => 'admin'
+        ]);
     }
 
     /**
@@ -36,12 +30,9 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
-
-        $create = new Admin;
-        return view('super.profile.create',compact(
-            'create'
-        ));
+        return view('admin.index', [
+            'title' => 'Admin'
+        ]);
     }
 
     /**
@@ -79,7 +70,7 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($username)
+    public function show()
     {
         // $data = Admin::find($username);
 

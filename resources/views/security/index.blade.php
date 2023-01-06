@@ -53,7 +53,7 @@
                         </span>
                         </div>
                         <div class="col">
-                        <p class="small text-muted mb-0">{{ auth()->user()->status }}</p>
+                        <p class="small text-muted mb-0">Conversion</p>
                         <div class="row align-items-center no-gutters">
                             <div class="col-auto">
                             <span class="h3 mr-2 mb-0"> 86.6% </span>

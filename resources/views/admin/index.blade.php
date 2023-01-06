@@ -17,7 +17,7 @@
                         </span>
                         </div>
                         <div class="col pr-0">
-                        <p class="small text-muted mb-0">Students Home</p>
+                        <p class="small text-muted mb-0">Admin Home</p>
                         <span class="h3 mb-0 text-white">$1250</span>
                         <span class="small text-muted">+5.5%</span>
                         </div>
@@ -79,7 +79,7 @@
                         </span>
                         </div>
                         <div class="col">
-                        <p class="small text-muted mb-0">AVG Orders</p>
+                        <p class="small text-muted mb-0">{{ auth()->user()->username }}</p>
                         <span class="h3 mb-0">$80</span>
                         </div>
                     </div>

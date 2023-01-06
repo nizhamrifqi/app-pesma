@@ -17,7 +17,9 @@
                         </span>
                         </div>
                         <div class="col pr-0">
-                        <p class="small text-muted mb-0">Admin Home</p>
+                        <p class="small text-muted mb-0">@if (!auth()->user()->status != '1')
+                            Super
+                        @endif</p>
                         <span class="h3 mb-0 text-white">$1250</span>
                         <span class="small text-muted">+5.5%</span>
                         </div>
@@ -53,7 +55,7 @@
                         </span>
                         </div>
                         <div class="col">
-                        <p class="small text-muted mb-0">Conversion</p>
+                        <p class="small text-muted mb-0">{{ auth()->user()->status }}</p>
                         <div class="row align-items-center no-gutters">
                             <div class="col-auto">
                             <span class="h3 mr-2 mb-0"> 86.6% </span>

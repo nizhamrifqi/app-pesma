@@ -163,6 +163,9 @@
         </ul>
       </li>
     </ul>
+
+    @can('superadm', 'admin', 'security')
+        
     <p class="text-muted nav-heading mt-4 mb-1">
       <span>Apps</span>
     </p>
@@ -219,6 +222,8 @@
         </ul>
       </li>
     </ul>
+
+    @endcan
     <p class="text-muted nav-heading mt-4 mb-1">
       <span>Extra</span>
     </p>
