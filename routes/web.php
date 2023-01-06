@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SecurityController;
+use App\Http\Controllers\SuperAdmController;
 use App\Http\Controllers\StudentActiveController;
 
 
@@ -22,25 +24,30 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/b', function () {
-    return view('index');
-});
-
 //Login
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-
-Route::prefix('super')->middleware('auth:admin')->group(function () {
-    Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard-supers');
-    Route::get('/profile', [AdminController::class, 'dashboard'])->name('dashboard-supers');
+//Page SuperAdmin
+Route::prefix('super')->middleware('superadm')->group(function () {
+    Route::get('/', [SuperAdmController::class, 'index'])->name('dashboard-super');
+    Route::get('/profile', [SuperAdmController::class, 'edit'])->name('edit');
 });
-Route::get('/admin', [AdminController::class, 'index'])->name('dashboard-admin');
-Route::get('/security', [AdminController::class, 'index'])->name('dashboard-security');
 
-Route::middleware('auth:student')->group(function () {
-    Route::get('/student', [AdminController::class, 'dashboards'])->name('dashboard-student');
+//Page Admin
+Route::prefix('admin')->middleware('admin')->group(function (){
+    Route::get('/', [AdminController::class, 'index'])->name('dashboard-admin');
+});
+
+//Page Security
+Route::prefix('security')->middleware('security')->group(function (){
+    Route::get('/', [SecurityController::class, 'index'])->name('dashboard-security');
+});
+
+//Page Student
+Route::prefix('student')->middleware('student')->group(function () {
+    Route::get('/', [StudentController::class, 'index'])->name('dashboard-student');
 });
 
 

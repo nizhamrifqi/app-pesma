@@ -9,14 +9,9 @@ class AdminController extends Controller
     //
     public function index()
     {
-        return view('welcome', [
-            'title' => 'Login'
+        return view('admin.index', [
+            'title' => 'Admin'
         ]);
-    }
-
-    public function dashboard()
-    {
-        return view('super.index');
     }
 
     public function show($id)
