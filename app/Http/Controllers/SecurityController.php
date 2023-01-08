@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class SecurityController extends Controller
 {
-    //
     public function index()
     {
         return view('welcome', [
@@ -16,7 +15,7 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('admin.index');
+        return view('security.index');
     }
 
     public function show($id)

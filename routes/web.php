@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SecurityController;
+use App\Http\Controllers\SuperAdmController;
+use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\StudentActiveController;
 
 
@@ -32,15 +35,21 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 
-Route::prefix('super')->middleware('auth:admin')->group(function () {
-    Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard-supers');
-    Route::get('/profile', [AdminController::class, 'dashboard'])->name('dashboard-supers');
+Route::prefix('super')->middleware('SuperAdm')->group(function () {
+    Route::resource('/data', SuperAdminController::class);
+    Route::get('/', [SuperAdminController::class, 'dashboard'])->name('dashboard-super');
 });
-Route::get('/admin', [AdminController::class, 'index'])->name('dashboard-admin');
-Route::get('/security', [AdminController::class, 'index'])->name('dashboard-security');
+
+Route::prefix('admin')->middleware('auth:admin')->group(function () {
+    Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard-admin');
+});
+
+Route::prefix('security')->middleware('auth:admin')->group(function () {
+    Route::get('/', [SecurityController::class, 'dashboard'])->name('dashboard-security');
+});
 
 Route::middleware('auth:student')->group(function () {
-    Route::get('/student', [AdminController::class, 'dashboards'])->name('dashboard-student');
+    Route::get('/student', [AdminController::class, 'dashboard'])->name('dashboard-student');
 });
 
 

@@ -33,7 +33,7 @@ class LoginController extends Controller
         
         //If fill form with data admin
         if (Auth::guard('admin')->attempt( ['username' =>$request->nim , 'password' => $request->password, 'status' => '1'] )){
-            return redirect()->route('dashboard-supers');
+            return redirect()->route('dashboard-super');
         }elseif(Auth::guard('admin')->attempt( ['username' =>$request->nim , 'password' => $request->password, 'status' => '2'] )){
             return redirect()->route('dashboard-admin');
         }elseif(Auth::guard('admin')->attempt( ['username' =>$request->nim , 'password' => $request->password, 'status' => '3'] )){

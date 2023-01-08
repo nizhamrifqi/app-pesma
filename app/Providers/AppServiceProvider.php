@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
+use Illuminate\Support\Facades\Gate;
+use App\Models\Admin;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -26,5 +28,9 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Schema::defaultStringLength(191);
+
+        Gate::define('superadm', function (Admin $admin) {
+            return $admin->status == 1;
+        });
     }
 }

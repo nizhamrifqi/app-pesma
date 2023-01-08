@@ -17,8 +17,8 @@
                         </span>
                         </div>
                         <div class="col pr-0">
-                        <p class="small text-muted mb-0">@if ( auth()->user()->status == '1')
-                            Super Admin 
+                        <p class="small text-muted mb-0">@if ( auth()->user()->status == '2')
+                            Admin 
                         @endif</p>
                         <span class="h3 mb-0 text-white">$1250</span>
                         <span class="small text-muted">+5.5%</span>

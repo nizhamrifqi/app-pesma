@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class SuperAdmController extends Controller
 {
     //
     public function index()
@@ -16,14 +16,14 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('admin.index');
+        return view('super.index');
     }
 
     public function show($id)
     {
         //
         $data = Admin::where('id',$id)->first();
-        return view('index.profile', compact(
+        return view('super.profile', compact(
             'data'
         ));
 
