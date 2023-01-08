@@ -63,114 +63,74 @@
         </a>
       </li>
     </ul>
+    @can('student')
     <p class="text-muted nav-heading mt-4 mb-1">
       <span>Data</span>
     </p>
     <ul class="navbar-nav flex-fill w-100 mb-2">
-      <li class="nav-item dropdown">
-        <a href="#ui-elements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+      <li class="nav-item w-100">
+        <a class="nav-link" href="">
           <i class="fe fe-user fe-16"></i>
-          <span class="ml-3 item-text">Students</span>
+          <span class="ml-3 item-text">Student</span>
         </a>
-        <ul class="collapse list-unstyled pl-4 w-100" id="ui-elements">
-          <li class="nav-item">
-            <a class="nav-link pl-3" href="{{ url('admin/student/active') }}"><span class="ml-1 item-text">Active</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link pl-3" href="./ui-typograpy.html"><span class="ml-1 item-text">Typograpy</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link pl-3" href="./ui-icons.html"><span class="ml-1 item-text">Icons</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link pl-3" href="./ui-buttons.html"><span class="ml-1 item-text">Buttons</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link pl-3" href="./ui-notification.html"><span class="ml-1 item-text">Notifications</span></a>
-          </li>
-          
-        </ul>
       </li>
       <li class="nav-item w-100">
-        <a class="nav-link" href="widgets.html">
-          <i class="fe fe-layers fe-16"></i>
-          <span class="ml-3 item-text">Widgets</span>
-          <span class="badge badge-pill badge-primary">New</span>
+        <a class="nav-link" href="">
+          <i class="fe fe-user fe-16"></i>
+          <span class="ml-3 item-text">Student</span>
         </a>
-      </li>
-      <li class="nav-item dropdown">
-        <a href="#forms" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-          <i class="fe fe-credit-card fe-16"></i>
-          <span class="ml-3 item-text">Forms</span>
-        </a>
-        <ul class="collapse list-unstyled pl-4 w-100" id="forms">
-          <li class="nav-item">
-            <a class="nav-link pl-3" href="./form_elements.html"><span class="ml-1 item-text">Basic Elements</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link pl-3" href="./form_advanced.html"><span class="ml-1 item-text">Advanced Elements</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link pl-3" href="./form_validation.html"><span class="ml-1 item-text">Validation</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link pl-3" href="./form_wizard.html"><span class="ml-1 item-text">Wizard</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link pl-3" href="./form_layouts.html"><span class="ml-1 item-text">Layouts</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link pl-3" href="./form_upload.html"><span class="ml-1 item-text">File upload</span></a>
-          </li>
-        </ul>
-      </li>
-      <li class="nav-item dropdown">
-        <a href="#tables" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-          <i class="fe fe-grid fe-16"></i>
-          <span class="ml-3 item-text">Tables</span>
-        </a>
-        <ul class="collapse list-unstyled pl-4 w-100" id="tables">
-          <li class="nav-item">
-            <a class="nav-link pl-3" href="./table_basic.html"><span class="ml-1 item-text">Basic Tables</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link pl-3" href="./table_advanced.html"><span class="ml-1 item-text">Advanced Tables</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link pl-3" href="./table_datatables.html"><span class="ml-1 item-text">Data Tables</span></a>
-          </li>
-        </ul>
-      </li>
-      <li class="nav-item dropdown">
-        <a href="#charts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-          <i class="fe fe-pie-chart fe-16"></i>
-          <span class="ml-3 item-text">Charts</span>
-        </a>
-        <ul class="collapse list-unstyled pl-4 w-100" id="charts">
-          <li class="nav-item">
-            <a class="nav-link pl-3" href="./chart-inline.html"><span class="ml-1 item-text">Inline Chart</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link pl-3" href="./chart-chartjs.html"><span class="ml-1 item-text">Chartjs</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link pl-3" href="./chart-apexcharts.html"><span class="ml-1 item-text">ApexCharts</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link pl-3" href="./datamaps.html"><span class="ml-1 item-text">Datamaps</span></a>
-          </li>
-        </ul>
       </li>
     </ul>
+    @endcan
+
+    @can('SuperAdm')
     <p class="text-muted nav-heading mt-4 mb-1">
       <span>Apps</span>
     </p>
     <ul class="navbar-nav flex-fill w-100 mb-2">
       <li class="nav-item w-100">
-        <a class="nav-link" href="calendar.html">
+        <a class="nav-link" href="{{ url('super/data') }}">
           <i class="fe fe-calendar fe-16"></i>
-          <span class="ml-3 item-text">Calendar</span>
+          <span class="ml-3 item-text">Admin</span>
+        </a>
+      </li>
+    </ul>
+    @endcan
+    @can('admin')
+    <p class="text-muted nav-heading mt-4 mb-1">
+      <span>Apps</span>
+    </p>
+    <ul class="navbar-nav flex-fill w-100 mb-2">
+      <li class="nav-item w-100">
+        <a class="nav-link" href="{{ url('super/data') }}">
+          <i class="fe fe-calendar fe-16"></i>
+          <span class="ml-3 item-text">Admin</span>
+        </a>
+      </li>
+    </ul>
+    @endcan
+    @can('security')
+    <p class="text-muted nav-heading mt-4 mb-1">
+      <span>Apps</span>
+    </p>
+    <ul class="navbar-nav flex-fill w-100 mb-2">
+      <li class="nav-item w-100">
+        <a class="nav-link" href="{{ url('super/data') }}">
+          <i class="fe fe-calendar fe-16"></i>
+          <span class="ml-3 item-text">Security</span>
+        </a>
+      </li>
+    </ul>
+    @endcan
+
+    <p class="text-muted nav-heading mt-4 mb-1">
+      <span>Apps</span>
+    </p>
+    <ul class="navbar-nav flex-fill w-100 mb-2">
+      <li class="nav-item w-100">
+        <a class="nav-link" href="">
+          <i class="fe fe-calendar fe-16"></i>
+          <span class="ml-3 item-text">Admin</span>
         </a>
       </li>
       <li class="nav-item dropdown">
@@ -219,6 +179,7 @@
         </ul>
       </li>
     </ul>
+
     <p class="text-muted nav-heading mt-4 mb-1">
       <span>Extra</span>
     </p>
