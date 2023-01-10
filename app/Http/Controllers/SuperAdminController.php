@@ -18,7 +18,7 @@ class SuperAdminController extends Controller
     {
         //View Data Admin
         $DataAdmin = Admin::where('status', '!=', 1)->get();;
-        return view('super.data.index', compact(
+        return view('super.data.admin.index', compact(
             'DataAdmin'
         ));
     }
@@ -37,7 +37,7 @@ class SuperAdminController extends Controller
     public function create()
     {
         //viwe create new admin
-        return view('super.data.create');
+        return view('super.data.admin.create');
     }
 
     /**

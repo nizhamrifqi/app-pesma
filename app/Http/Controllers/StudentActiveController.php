@@ -18,12 +18,17 @@ class StudentActiveController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+
+    }
     public function index()
     {
         //
-        $active = Student::all();
-        return view('admin.student.active.index', compact(
-            'active'
+        $url_segment = \Request::segment(1);
+        $DataStudent = Student::select('*')->orderBy('ket', 'desc')->get();
+        return view($url_segment.'.data.student.index', compact(
+            'DataStudent'
         ));
     }
 
@@ -34,10 +39,12 @@ class StudentActiveController extends Controller
      */
     public function create()
     {
-        //
-        return view('admin.student.active.create', [
-            'rooms' => Room::all(),
-            'faculties' => Faculty::all()
+        //Method Create 
+        $url_segment = \Request::segment(1);
+        $data = new Student;
+        return view($url_segment.'.data.student.create',compact('data'), [
+            'rooms' => Room::select('id','name_room')->orderBy('name_room', 'asc')->get(),
+            'faculties' => Faculty::select('id','name_faculty')->orderBy('name_faculty', 'asc')->get(),
         ]);
         
     }
@@ -48,13 +55,13 @@ class StudentActiveController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ErrorsRequest $request)
+    public function store(Request $request)
     {
         //
 
         //return $request->file('image')->move('tinydash/img/', store('image'));
 
-        
+        $url_segment = \Request::segment(1);
         $parent = new StudentParent;
         $parent->parent_name = $request->parentname;
         $parent->phone = $request->parentphone;
@@ -82,9 +89,7 @@ class StudentActiveController extends Controller
         
         $student->save();
 
-        
-
-        return redirect('admin/student/active')->with('success', "Data berhasil Disimpan");
+        return redirect($url_segment.'/data/student')->with('success', "Data berhasil Disimpan");
         
     }
 
@@ -97,8 +102,9 @@ class StudentActiveController extends Controller
     public function show($nim)
     {
         //
+        $url_segment = \Request::segment(1);
         $data = Student::where('nim',$nim)->first();
-        return view('admin.student.active.detail', compact(
+        return view($url_segment.'.data.student.detail', compact(
             'data'
         ));
 
@@ -110,9 +116,15 @@ class StudentActiveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($nim)
     {
         //
+        $url_segment = \Request::segment(1);
+        $data = Student::where('nim',$nim)->first();
+        return view($url_segment.'.data.student.edit', compact('data'), [
+            'rooms' => Room::select('id','name_room')->orderBy('name_room', 'asc')->get(),
+            'faculties' => Faculty::select('id','name_faculty')->orderBy('name_faculty', 'asc')->get(),
+        ]);
     }
 
     public function reset($nim)
@@ -130,9 +142,22 @@ class StudentActiveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $nim)
     {
-        //
+        $data = Student::where('nim',$nim)->first();
+        $data->update($request->all());
+
+        // dd($request->all());
+        return back()->with('message', 'Your profile has been updated');
+    }
+
+    public function updateprofile(Request $request)
+    {
+        $id = $request->idparent;
+        $data = StudentParent::where('id',$id)->first();
+        $data->update($request->all());
+
+        return back()->with('message', 'Your profile has been updated');
     }
 
     /**
@@ -144,5 +169,9 @@ class StudentActiveController extends Controller
     public function destroy($id)
     {
         //
+        $url_segment = \Request::segment(1);
+        $student = student::find($id);
+        $student->delete();
+        return redirect($url_segment.'/data/student')->with('deleted', "Data was deleted");
     }
 }

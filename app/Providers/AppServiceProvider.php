@@ -8,6 +8,8 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 use Illuminate\Support\Facades\Gate;
 use App\Models\Admin;
 use App\Models\Student;
+use Request;
+use View;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -34,15 +36,15 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         $this->registerPolicies();
 
-        Gate::define('SuperAdm', function (Admin $admin) {
+        Gate::define('SuperAdm', function ($admin) {
             return $admin->status == '1';
         });
 
-        Gate::define('admin', function (Admin $admin) {
+        Gate::define('admin', function ($admin) {
             return $admin->status == 2;
         });
 
-        Gate::define('security', function (Admin $admin) {
+        Gate::define('security', function ($admin) {
             return $admin->status == 3;
         });
         

@@ -14,13 +14,21 @@ class AdminController extends Controller
         ]);
     }
 
-    public function show($id)
-    {
-        //
-        $data = Admin::where('id',$id)->first();
-        return view('super.profile', compact(
-            'data'
-        ));
+    // public function show($id)
+    // {
+    //     //
+    //     $data = Admin::where('id',$id)->first();
+    //     return view('super.profile', compact(
+    //         'data'
+    //     ));
 
+    // }
+
+    public function dashboard()
+    {
+        
+        return view('admin.index', [
+            'title' => 'Admin'
+        ]);
     }
 }

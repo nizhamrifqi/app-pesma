@@ -16,6 +16,9 @@ class IsSecurity
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if (auth()->check() || auth()->user()->status == 3 ){
+            return $next($request);
+        }
+        abort(403);
     }
 }
