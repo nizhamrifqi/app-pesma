@@ -40,4 +40,9 @@ class Student extends Authenticatable
         return $this->belongsTo(studentparent::class);
     }
 
+    public function history()
+    {
+        return $this->hasMany(history::class);
+    }
+
 }

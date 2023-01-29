@@ -26,12 +26,12 @@
                             Parent
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" id="password-tab" data-toggle="tab" href="#password" role="tab" aria-controls="password" aria-selected="false">
                         <i class="fe fe-lock fe-12 mr-1"></i>    
                             Password
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
 
                 <div class="tab-content" id="myTabContent">
@@ -46,9 +46,9 @@
                             @include('student.data._parentform')
                             </div>
 
-                            <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab"> 
-                            @include('student.data._parentform')
-                            </div>
+                            {{-- <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab"> 
+                            @include('student.data._passwordform')
+                            </div> --}}
                     
                         </div>
                     {{-- </form> --}}

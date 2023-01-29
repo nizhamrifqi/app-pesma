@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SecurityController;
 use App\Http\Controllers\SuperAdmController;
@@ -37,6 +38,10 @@ Route::prefix('super')->middleware('auth:admin')->group(function () {
     Route::get('/', [SuperAdminController::class, 'dashboard'])->name('dashboard-super');
     Route::get('/data/student/reset/{student:nim}', [StudentActiveController::class, 'reset']);
     Route::put('/data/student', [StudentActiveController::class, 'updateprofile']);
+    Route::get('/history', [HistoryController::class, 'history']);
+    Route::get('/history/data/', [HistoryController::class, 'approve']);
+    Route::get('/history/data/change/{history:id}', [HistoryController::class, 'change']);
+    Route::get('/history/data/deceline/{history:id}', [HistoryController::class, 'deceline']);
     // Route::get('/profile', [SuperAdmController::class, 'edit'])->name('edit');
 });
 
@@ -53,17 +58,27 @@ Route::prefix('admin')->middleware('auth:admin')->group(function (){
 Route::prefix('security')->middleware('auth:admin')->group(function (){
     // Route::resource('/data', StudentActiveController::class);
     Route::get('/', [SecurityController::class, 'index'])->name('dashboard-security');
+    Route::get('/data', [SecurityController::class, 'detail']);
     Route::resource('/data/student', StudentActiveController::class)->except('create','store','edit','update','destroy');
+
+    Route::get('/data/history', [HistoryController::class, 'history']);
+    Route::get('/data/history/data', [HistoryController::class, 'approve']);
+    Route::get('/history/data/change/{history:id}', [HistoryController::class, 'change']);
+    Route::get('/history/data/change/{history:id}', [HistoryController::class, 'deceline']);
 });
 
 //Page Student
 Route::prefix('student')->middleware('auth:student')->group(function () {
     Route::resource('/data', StudentController::class)->except(['index','create','destroy','store']);
     Route::get('/', [StudentController::class, 'dashboard'])->name('dashboard-student');
+    Route::resource('/history', HistoryController::class);
     // Route::get('/data/reset/{student:nim}', [StudentActiveController::class, 'reset']);
     // Route::put('/data/updatestudent', [StudentController::class, 'updatestudent']);
-    // Route::put('/data', [StudentController::class, 'updatestudent'])->name('updatestudent');
+    Route::put('/data', [StudentController::class, 'updatestudent'])->name('updatestudent');
     Route::put('/data', [StudentController::class, 'updateprofile'])->name('update-parent');
+    // Route::get('/data/password/{student:nim}', [StudentController::class, 'password']);
+    //Route::get('/data/show/{student:nim}', [StudentController::class, 'permit']);
+
 });
 
 

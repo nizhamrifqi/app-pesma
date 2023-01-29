@@ -12,7 +12,7 @@
 
             <div class="col mt-0">
                 <div class="dropdown float-right">
-                    <a href="{{url('super/data/create')}}" class="btn btn-primary float-right ml-3">
+                    <a href="{{url('super/data/admin/create')}}" class="btn btn-primary float-right ml-3">
                     <i class="fe fe-plus fe-12 mr-2"></i><span class="small">Add</span>
                     </a>
                 </div>
@@ -64,10 +64,11 @@
                                     @else
                                         
                                     @endif
-                                    <td> <a class='btn btn-primary fe fe-user' 
-                                    href="{{ url('super/data/'.$data->username) }}"> </a> 
+                                    <td> 
+                                        {{-- <a class='btn btn-primary fe fe-user' 
+                                    href="{{ url('super/data/admin/'.$data->username) }}"> </a>  --}}
                                 
-                                    <form action="{{ url('super/data/'.$data->id)}}" method="post" class='d-inline'>
+                                    <form action="{{ url('super/data/admin/'.$data->id)}}" method="post" class='d-inline'>
                                         @csrf
                                         @method('delete')
 

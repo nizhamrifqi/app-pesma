@@ -6,6 +6,7 @@ use App\Models\Student;
 use App\Models\Room;
 use App\Models\Faculty;
 use App\Models\StudentParent;
+use App\Models\History;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ErrorsRequest;
@@ -27,9 +28,9 @@ class StudentActiveController extends Controller
         //
         $url_segment = \Request::segment(1);
         $DataStudent = Student::select('*')->orderBy('ket', 'desc')->get();
-        return view($url_segment.'.data.student.index', compact(
-            'DataStudent'
-        ));
+        return view($url_segment.'.data.student.index', compact('DataStudent'),[
+            'title' => 'Super Admin'
+        ]);
     }
 
     /**
@@ -45,6 +46,7 @@ class StudentActiveController extends Controller
         return view($url_segment.'.data.student.create',compact('data'), [
             'rooms' => Room::select('id','name_room')->orderBy('name_room', 'asc')->get(),
             'faculties' => Faculty::select('id','name_faculty')->orderBy('name_faculty', 'asc')->get(),
+            'title' => 'Super Admin'
         ]);
         
     }
@@ -60,6 +62,11 @@ class StudentActiveController extends Controller
         //
 
         //return $request->file('image')->move('tinydash/img/', store('image'));
+        
+        $request->validate([
+            'phone' => 'required|digits:12'
+            
+        ]);
 
         $url_segment = \Request::segment(1);
         $parent = new StudentParent;
@@ -72,6 +79,7 @@ class StudentActiveController extends Controller
 
         $student = new Student;
         $student->nim = $request->nim;
+        $student->nik = $request->nik;
         $student->full_name = $request->fullname;
         $student->gender = $request->gender;
         $student->room_id = $request->room;
@@ -104,9 +112,15 @@ class StudentActiveController extends Controller
         //
         $url_segment = \Request::segment(1);
         $data = Student::where('nim',$nim)->first();
+        $history = History::where('student_id',$data->id)->get();
         return view($url_segment.'.data.student.detail', compact(
-            'data'
+            'data', 'history'
         ));
+
+        // $history = History::where('student_id',$nim)->get();
+        // return view('student.history.index', compact('history'),[
+        //     'title' => 'Student',
+        // ]);
 
     }
 
@@ -173,5 +187,20 @@ class StudentActiveController extends Controller
         $student = student::find($id);
         $student->delete();
         return redirect($url_segment.'/data/student')->with('deleted', "Data was deleted");
+    }
+
+    public function password(Request $request){
+
+        $id = $request->idstudent;
+        $data = Student::where('id',$id)->first();
+        dd($data->update($request->all()));
+
+        $password = $request->password;
+        $reapeat = $request->reapeat;
+        // dd($qe);
+        // $password = Student::select('password')->where('nim',$nim)->first();
+        // Student::where('nim',$nim)->update(['password'=>Hash::make($nim)]);
+        dd($request->all());
+        return redirect()->back()->with('success', "Password $nim berhasil di Reset");
     }
 }

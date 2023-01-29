@@ -9,13 +9,13 @@
     </a>
     </li>
     <li class="nav-item w-100">
-    <a class="nav-link" href="">
+    <a class="nav-link" href="{{ url('student/history/create')}}">
         <i class="fe fe-server fe-16"></i>
         <span class="ml-3 item-text">Permission</span>
     </a>
     </li>
     <li class="nav-item w-100">
-    <a class="nav-link" href="">
+    <a class="nav-link" href="{{ url('student/history')}}">
         <i class="fe fe-database fe-16"></i>
         <span class="ml-3 item-text">History</span>
     </a>

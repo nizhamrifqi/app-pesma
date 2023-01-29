@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         //\App\Models\User::factory(10)->create();
         \App\Models\Student::factory(17)->create();
         \App\Models\Room::factory(10)->create();
-        \App\Models\Faculty::factory(10)->create();
+        // \App\Models\Faculty::factory(10)->create();
         \App\Models\StudentParent::factory(10)->create();
         \App\Models\Admin::factory(5)->create();
         \App\Models\User::create([
@@ -37,8 +37,19 @@ class DatabaseSeeder extends Seeder
         'password' => Hash::make('12345'),
         'phone' => '081327934811'
         ]);
+
+        \App\Models\Permit::create([
+            'name_kind' => 'Masuk',
+            ]);
+        \App\Models\Permit::create([
+            'name_kind' => 'Keluar',
+            ]);
+        \App\Models\Permit::create([
+            'name_kind' => 'Pulang Kerumah',
+            ]);
     
         $this->call(AdminSeeder::class);
+        $this->call(FacultySeeder::class);
 
     }
 }

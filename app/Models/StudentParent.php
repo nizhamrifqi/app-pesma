@@ -13,6 +13,6 @@ class StudentParent extends Model
     
     public function student()
     {
-        return $this->hasMany(faculty::class);
+        return $this->hasMany(student::class);
     }
 }

@@ -48,6 +48,13 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3">
+                        <label for="nik">nik</label>
+                        <input type="text" id="nik" class="form-control @error('nik') is-invalid @enderror" name="nik" value="{{old('nik', Auth::user()->nik)}}" placeholder="nik" readonly>
+                        @error('nik')
+                            <div class="invalid-feedback"> {{$message}} </div>
+                        @enderror
+                    </div>
+                    <div class="form-group mb-3">
                         <label for="fullname">Full Name</label>
                         <input type="text" id="fullname" class="form-control @error('fullname') is-invalid @enderror" name="fullname" value="{{old('fullname', Auth::user()->full_name)}}" placeholder="Full Name">
                         @error('fullname')

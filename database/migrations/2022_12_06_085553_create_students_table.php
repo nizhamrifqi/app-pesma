@@ -15,7 +15,7 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->string('nim');
+            $table->string('nim')->unique;
             $table->string('full_name');
             $table->enum('gender',['Male','Female']);
             $table->foreignId('room_id');
@@ -24,7 +24,7 @@ class CreateStudentsTable extends Migration
             $table->string('password');
             $table->string('phone');
             $table->string('img_student')->nullable();
-            $table->string('ket')->default('0');
+            $table->string('ket')->default('1');
             $table->timestamps();
         });
     }

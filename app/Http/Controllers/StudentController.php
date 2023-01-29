@@ -42,14 +42,15 @@ class StudentController extends Controller
     {
         $reset = Student::select('password')->where('nim',$nim)->first();
         Student::where('nim',$nim)->update(['password'=>Hash::make($nim)]);
-        dd($request->all());
-        // return redirect()->back()->with('success', "Password $nim berhasil di Reset");
+        // dd($request->all());
+        return redirect()->back()->with('success', "Password $nim berhasil di Reset");
     }
     public function show($nim)
     {
         // Method untuk menampilkan detail dari student
         $data = Student::where('nim',$nim)->first();
         return view('student.data.index', compact('data'),[
+            'title' => 'Student',
             'rooms' => Room::select('id','name_room')->orderBy('name_room', 'asc')->get(),
             'faculties' => Faculty::select('id','name_faculty')->orderBy('name_faculty', 'asc')->get(),
         ]);
@@ -140,6 +141,16 @@ class StudentController extends Controller
 
         // dd($request->all());
         return back()->with('message', 'Your profile has been updated');
+    }
+
+    public function password(Request $request, $nim)
+    {
+        $data = Student::where('nim',$nim)->first();
+        return view('student.data.index', compact('data'),[
+            'title' => 'Student',
+            'rooms' => Room::select('id','name_room')->orderBy('name_room', 'asc')->get(),
+            'faculties' => Faculty::select('id','name_faculty')->orderBy('name_faculty', 'asc')->get(),
+        ]);
     }
 
     public function destroy($id)

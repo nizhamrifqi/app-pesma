@@ -6,6 +6,13 @@
     @enderror
 </div>
 <div class="form-group">
+    <label for="nik">nik</label>
+    <input class="form-control @error('nik') is-invalid @enderror" id="nik" name="nik" value="{{ old('nik') }}" placeholder="nik" required></input>
+    @error('nik')
+        <div class="invalid-feedback"> {{$message}} </div>
+    @enderror
+</div>
+<div class="form-group">
     <label for="fullname">Full Name</label>
     <input class="form-control @error('fullname') is-invalid @enderror" id="fullname" name="fullname" value="{{ old('fullname') }}" placeholder="Full Name" required></input>
     @error('fullname')

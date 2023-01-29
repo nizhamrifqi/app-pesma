@@ -26,9 +26,9 @@
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
         
         @can('student')
-        <a class="dropdown-item" href="student">
+        <a class="dropdown-item" href="{{ url('student/data/'.auth()->user()->nim)}}">
         @elsecan('SuperAdm')
-        <a class="dropdown-item" href="super">
+        <a class="dropdown-item" href="#">
         @elsecan('admin')
         <a class="dropdown-item" href="admin">
         @elsecan('security')

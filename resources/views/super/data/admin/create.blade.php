@@ -26,10 +26,10 @@
                     </div>
                     <div class="card-body">
 
-                        <form method="POST" action="{{ url('super/data') }}" class="" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('super/data/admin') }}" class="" enctype="multipart/form-data">
                             @csrf
                         
-                            @include('super.data._form')
+                            @include('super.data.admin._form')
                         </form>
 
                     </div> <!-- /.card -->

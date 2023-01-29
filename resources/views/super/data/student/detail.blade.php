@@ -111,103 +111,44 @@ $url_segment = \Request::segment(1);
                     </div>
                 </div> <!-- .col-md -->
             </div> <!-- .col-md -->
-
+         
+            @if(!$history->isEmpty())
             <h6 class="mb-3">History</h6>
             <table class="table table-borderless table-striped">
                 <thead>
                 <tr role="row">
                     <th>ID</th>
-                    <th>Tujuan</th>
+                    <th>Type</th>
                     <th>Date</th>
-                    <th>Out</th>
-                    <th>In</th>
+                    <th>Detail</th>
                     <th>Status</th>
-                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
+                    @foreach($history as $detail)
                 <tr>
-                    <th scope="col">1331</th>
-                    <td>2020-12-26 01:32:21</td>
-                    <td>{{$data->password}}</td>
-                    <td>Paypal</td>
-                    <td>Paypal</td>
-                    <td><span class="dot dot-lg bg-warning mr-2"></span>Due</td>
-                    <td>
-                    <div class="dropdown">
-                        <button class="btn btn-sm dropdown-toggle more-vertical" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="text-muted sr-only">Action</span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Edit</a>
-                        <a class="dropdown-item" href="#">Remove</a>
-                        <a class="dropdown-item" href="#">Assign</a>
-                        </div>
-                    </div>
+                    <th scope="col"> {{ $loop->iteration }} </th>
+                    <td>{{$detail->permit->name_kind}}</td>
+                    <td>{{$detail->permit->created_at}}</td>
+                    <td>{{$detail->detail}}</td>
+                    <td> 
+                        @if ($detail->status == '1')
+                            <span class="badge badge-pill badge-success"> Approve </span>
+                        @elseif($detail->status == '2')
+                            <span class="badge badge-pill badge-danger">Deceline</span>
+                        @else
+                            <span class="badge badge-pill badge-warning">Pending </span>
+                        @endif
                     </td>
                 </tr>
-                <tr>
-                    <th scope="col">1156</th>
-                    <td>2020-04-21 00:38:38</td>
-                    <td>$9.9</td>
-                    <td>Paypal</td>
-                    <td>Paypal</td>
-                    <td><span class="dot dot-lg bg-danger mr-2"></span>False</td>
-                    <td>
-                    <div class="dropdown">
-                        <button class="btn btn-sm dropdown-toggle more-vertical" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="text-muted sr-only">Action</span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Edit</a>
-                        <a class="dropdown-item" href="#">Remove</a>
-                        <a class="dropdown-item" href="#">Assign</a>
-                        </div>
-                    </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="col">1038</th>
-                    <td>2019-06-25 19:13:36</td>
-                    <td>$9.9</td>
-                    <td>Credit Card </td>
-                    <td>Credit Card </td>
-                    <td><span class="dot dot-lg bg-success mr-2"></span>Paid</td>
-                    <td>
-                    <div class="dropdown">
-                        <button class="btn btn-sm dropdown-toggle more-vertical" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="text-muted sr-only">Action</span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Edit</a>
-                        <a class="dropdown-item" href="#">Remove</a>
-                        <a class="dropdown-item" href="#">Assign</a>
-                        </div>
-                    </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="col">1227</th>
-                    <td>2021-01-22 13:28:00</td>
-                    <td>$9.9</td>
-                    <td>Paypal</td>
-                    <td>Paypal</td>
-                    <td><span class="dot dot-lg bg-success mr-2"></span>Paid</td>
-                    <td>
-                    <div class="dropdown">
-                        <button class="btn btn-sm dropdown-toggle more-vertical" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="text-muted sr-only">Action</span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Edit</a>
-                        <a class="dropdown-item" href="#">Remove</a>
-                        <a class="dropdown-item" href="#">Assign</a>
-                        </div>
-                    </div>
-                    </td>
-                </tr>
+                
+                    @endforeach
+                    
                 </tbody>
             </table>
+            @else
+                Tidak ada Data
+            @endif
             </div> <!-- /.col-12 -->
         </div> <!-- .row -->
     </div> <!-- .container-fluid -->

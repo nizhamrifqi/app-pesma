@@ -18,9 +18,10 @@ class SuperAdminController extends Controller
     {
         //View Data Admin
         $DataAdmin = Admin::where('status', '!=', 1)->get();;
-        return view('super.data.admin.index', compact(
-            'DataAdmin'
-        ));
+        return view('super.data.admin.index', compact('DataAdmin'),
+        [
+            'title' => "Super Admin"   
+        ]);
     }
 
     public function dashboard()
@@ -71,9 +72,15 @@ class SuperAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($username)
     {
         //
+        $url_segment = \Request::segment(1);
+        $data = Admin::where('username',$username)->first();
+        // $history = History::where('student_id',$data->id)->get();
+        return view($url_segment.'.data.admin.detail', compact(
+            'data'
+        ));
     }
 
     /**
@@ -110,6 +117,6 @@ class SuperAdminController extends Controller
         //Deleted Data
         $admin = Admin::find($id);
         $admin->delete();
-        return redirect('super/data')->with('deleted', "Data was deleted");
+        return redirect('super/data/admin')->with('deleted', "Data was deleted");
     }
 }
