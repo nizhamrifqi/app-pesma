@@ -23,10 +23,10 @@
     <!-- Date Range Picker CSS -->
     <link rel="stylesheet" href="{{ asset('tinydash')}}/css/daterangepicker.css">
     <!-- App CSS -->
-    <link rel="stylesheet" href="{{ asset('tinydash')}}/css/app-light.css" id="lightTheme" disabled>
-    <link rel="stylesheet" href="{{ asset('tinydash')}}/css/app-dark.css" id="darkTheme">
+    <link rel="stylesheet" href="{{ asset('tinydash')}}/css/app-light.css" id="lightTheme" >
+    <link rel="stylesheet" href="{{ asset('tinydash')}}/css/app-dark.css" id="darkTheme" disabled>
   </head>
-  <body class="vertical  dark  ">
+  <body class="vertical  light  ">
     <div class="wrapper">
       
       

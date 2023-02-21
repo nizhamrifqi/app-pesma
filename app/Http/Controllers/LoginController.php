@@ -27,7 +27,7 @@ class LoginController extends Controller
         $request->session()->regenerate();
 
         //If fill form with data student
-        if(Auth::guard('student')->attempt(['nim' =>$request->nim , 'password' => $request->password])){
+        if(Auth::guard('student')->attempt(['nim' =>strtoupper($request->nim) , 'password' => $request->password])){
             return redirect()->route('dashboard-student');
         };
         

@@ -22,9 +22,7 @@ use App\Http\Controllers\StudentActiveController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
 
 //Login
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');

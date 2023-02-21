@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Student::create([
         'nim' => 'L200164004',
         'full_name' => 'Muhammad Nizhamuddin Rifqi',
-        'gender' => 'male',
+        'gender' => 'Male',
         'room_id' => '1',
         'faculty_id' => '1',
         'parent_id' => '1',
